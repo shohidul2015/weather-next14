@@ -4,7 +4,7 @@ import styles from "./page.module.css";
 
 function getCurrentDate() {
   const currentDate = new Date();
-  const options = { month: "long" };
+  const options = { month: "numeric" };
   const monthName = currentDate.toLocaleString("en-US", options);
   const date = new Date().getDate() + ", " + monthName;
   return date;
@@ -15,7 +15,7 @@ const Home = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [city, setCity] = useState("lahore");
 
-  async function fetchData(cityName) {
+  async function fetchData(cityName: string) {
     try {
       const response = await fetch(
         "http://localhost:3000/api/weather?address=" + cityName
